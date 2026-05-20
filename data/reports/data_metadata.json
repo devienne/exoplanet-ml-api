@@ -1,0 +1,54 @@
+{
+    "created_at_utc": "2026-05-20T16:26:31.464095+00:00",
+    "source": "NASA Exoplanet Archive TAP service",
+    "table": "cumulative",
+    "query": "SELECT kepid, kepoi_name, kepler_name, koi_disposition, koi_period, koi_impact, koi_duration, koi_depth, koi_prad, koi_teq, koi_insol, koi_model_snr, koi_count, koi_num_transits, koi_steff, koi_slogg, koi_smet, koi_srad, koi_smass, ra, dec, koi_kepmag FROM cumulative",
+    "processed_file": "data\\processed\\kepler_koi_binary.csv",
+    "target_definition": {
+        "planet_like = 1": [
+            "CONFIRMED"
+        ],
+        "planet_like = 0": [
+            "CANDIDATE"
+        ],
+        "removed": [
+            "FALSE POSITIVE",
+            "NOT DISPOSITIONED"
+        ]
+    },
+    "id_columns": [
+        "kepid",
+        "kepoi_name",
+        "kepler_name"
+    ],
+    "target_columns": [
+        "koi_disposition",
+        "planet_like",
+        "planet_like_label"
+    ],
+    "numeric_columns": [
+        "koi_period",
+        "koi_impact",
+        "koi_duration",
+        "koi_depth",
+        "koi_prad",
+        "koi_teq",
+        "koi_insol",
+        "koi_model_snr",
+        "koi_count",
+        "koi_num_transits",
+        "koi_steff",
+        "koi_slogg",
+        "koi_smet",
+        "koi_srad",
+        "koi_smass",
+        "ra",
+        "dec",
+        "koi_kepmag"
+    ],
+    "notes": [
+        "This is a simplified binary classification problem for an end-to-end ML engineering pilot.",
+        "Obvious leakage columns such as false-positive flags, disposition scores, comments, and vetting labels are not used.",
+        "RA and Dec are downloaded for EDA but excluded from the first feature set."
+    ]
+}
